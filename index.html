@@ -1,0 +1,1860 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Estuda+ | Ensino Médio</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f7fb;
+    color:#202735;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    padding:35px 20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:38px;
+    margin-bottom:8px;
+}
+
+header p{
+    font-size:17px;
+}
+
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:30px auto;
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+h3{
+    margin-bottom:10px;
+}
+
+.materias{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:35px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    border:1px solid #e2e8f0;
+    box-shadow:0 5px 15px rgba(0,0,0,0.07);
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+}
+
+.card button{
+    width:100%;
+    margin-top:15px;
+}
+
+button{
+    border:none;
+    border-radius:10px;
+    padding:14px 18px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    background:#4f46e5;
+    color:white;
+    min-height:48px;
+}
+
+button:hover{
+    background:#4338ca;
+}
+
+button.secundario{
+    background:#64748b;
+}
+
+button.secundario:hover{
+    background:#475569;
+}
+
+.temas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
+}
+
+.tema-card{
+    background:white;
+    padding:22px;
+    border-radius:15px;
+    border:1px solid #e2e8f0;
+}
+
+.tema-card button{
+    margin-top:12px;
+}
+
+.oculto{
+    display:none;
+}
+
+.voltar{
+    margin-bottom:20px;
+}
+
+.resumo{
+    background:#eef2ff;
+    border-left:5px solid #4f46e5;
+    padding:22px;
+    border-radius:10px;
+    margin:20px 0;
+}
+
+.exemplo{
+    background:#f8fafc;
+    border:1px solid #cbd5e1;
+    padding:18px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.quiz{
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    border:1px solid #e2e8f0;
+    box-shadow:0 5px 15px rgba(0,0,0,.06);
+    margin-top:25px;
+}
+
+.questao{
+    margin-bottom:35px;
+}
+
+.questao h3{
+    color:#312e81;
+}
+
+.alternativas{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:15px;
+}
+
+.alternativas button{
+    background:#f1f5f9;
+    color:#1e293b;
+    border:2px solid #cbd5e1;
+    text-align:left;
+}
+
+.alternativas button:hover{
+    background:#e0e7ff;
+    border-color:#6366f1;
+}
+
+.alternativas button.certa{
+    background:#dcfce7;
+    border-color:#22c55e;
+    color:#166534;
+}
+
+.alternativas button.errada{
+    background:#fee2e2;
+    border-color:#ef4444;
+    color:#991b1b;
+}
+
+.resolucao{
+    margin-top:15px;
+    padding:18px;
+    border-radius:10px;
+    background:#fff7ed;
+    border-left:5px solid #f97316;
+}
+
+.resultado{
+    background:#ecfdf5;
+    border:2px solid #22c55e;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    margin-top:25px;
+}
+
+.progress{
+    width:100%;
+    height:12px;
+    background:#e2e8f0;
+    border-radius:20px;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:#4f46e5;
+    transition:.3s;
+}
+
+footer{
+    margin-top:50px;
+    background:#1e293b;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:30px;
+    }
+
+    .container{
+        width:94%;
+    }
+
+    .card,
+    .tema-card,
+    .quiz{
+        padding:18px;
+    }
+
+    button{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>📚 Estuda+</h1>
+
+    <p>
+        Uma plataforma simples para ajudar estudantes do Ensino Médio
+        a revisar conteúdos e praticar com questões.
+    </p>
+
+</header>
+
+
+<div class="container">
+
+    <!-- MENU PRINCIPAL -->
+
+    <section id="inicio">
+
+        <h2>Escolha uma matéria</h2>
+
+        <div class="materias">
+
+            <div class="card">
+                <h2>📐 Matemática</h2>
+
+                <p>
+                    Revise os principais conteúdos matemáticos
+                    do Ensino Médio.
+                </p>
+
+                <button onclick="abrirMateria('matematica')">
+                    Estudar Matemática
+                </button>
+            </div>
+
+
+            <div class="card">
+
+                <h2>📖 Português</h2>
+
+                <p>
+                    Estude gramática, literatura,
+                    interpretação e linguagem.
+                </p>
+
+                <button onclick="abrirMateria('portugues')">
+                    Estudar Português
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>🌎 Geografia</h2>
+
+                <p>
+                    Revise população, globalização,
+                    economia, clima e espaço geográfico.
+                </p>
+
+                <button onclick="abrirMateria('geografia')">
+                    Estudar Geografia
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MATEMÁTICA -->
+
+    <section id="matematica" class="oculto">
+
+        <button class="secundario voltar" onclick="voltarInicio()">
+            ← Voltar
+        </button>
+
+        <h2>📐 Matemática</h2>
+
+        <p>
+            Escolha um conteúdo para estudar.
+        </p>
+
+        <div class="temas">
+
+            <div class="tema-card">
+                <h3>Equações</h3>
+                <p>Equações do 1º e 2º grau.</p>
+                <button onclick="abrirTema('eq')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>Funções</h3>
+                <p>Função afim e função quadrática.</p>
+                <button onclick="abrirTema('funcoes')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>Porcentagem</h3>
+                <p>Porcentagem, descontos e aumentos.</p>
+                <button onclick="abrirTema('porcentagem')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>Probabilidade</h3>
+                <p>Eventos e cálculo de probabilidades.</p>
+                <button onclick="abrirTema('probabilidade')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>Geometria</h3>
+                <p>Áreas, perímetros e volumes.</p>
+                <button onclick="abrirTema('geometria')">
+                    Estudar
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PORTUGUÊS -->
+
+    <section id="portugues" class="oculto">
+
+        <button class="secundario voltar" onclick="voltarInicio()">
+            ← Voltar
+        </button>
+
+        <h2>📖 Português</h2>
+
+        <div class="temas">
+
+            <div class="tema-card">
+                <h3>Interpretação de texto</h3>
+                <p>Compreensão e análise textual.</p>
+
+                <button onclick="abrirTema('interpretacao')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>Gramática</h3>
+                <p>Classes de palavras e funções.</p>
+
+                <button onclick="abrirTema('gramatica')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>Literatura</h3>
+                <p>Escolas literárias brasileiras.</p>
+
+                <button onclick="abrirTema('literatura')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>Figuras de linguagem</h3>
+                <p>Metáfora, ironia, comparação e outras.</p>
+
+                <button onclick="abrirTema('figuras')">
+                    Estudar
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GEOGRAFIA -->
+
+    <section id="geografia" class="oculto">
+
+        <button class="secundario voltar" onclick="voltarInicio()">
+            ← Voltar
+        </button>
+
+        <h2>🌎 Geografia</h2>
+
+        <div class="temas">
+
+            <div class="tema-card">
+                <h3>Globalização</h3>
+                <p>Integração econômica e cultural mundial.</p>
+
+                <button onclick="abrirTema('globalizacao')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>Clima</h3>
+                <p>Elementos e fatores climáticos.</p>
+
+                <button onclick="abrirTema('clima')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>Urbanização</h3>
+                <p>Crescimento das cidades.</p>
+
+                <button onclick="abrirTema('urbanizacao')">
+                    Estudar
+                </button>
+            </div>
+
+            <div class="tema-card">
+                <h3>População</h3>
+                <p>Dinâmica e distribuição populacional.</p>
+
+                <button onclick="abrirTema('populacao')">
+                    Estudar
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ÁREA DO TEMA -->
+
+    <section id="conteudo" class="oculto">
+
+        <button class="secundario voltar" onclick="voltarMaterias()">
+            ← Voltar aos conteúdos
+        </button>
+
+        <h2 id="tituloTema"></h2>
+
+        <div class="resumo">
+
+            <h3>📚 Resumo do conteúdo</h3>
+
+            <p id="textoResumo"></p>
+
+            <div class="exemplo">
+
+                <h3>💡 Exemplo</h3>
+
+                <p id="textoExemplo"></p>
+
+            </div>
+
+        </div>
+
+
+        <h2>📝 Quiz — nível ENEM</h2>
+
+        <p>
+            Responda às 5 questões. Se você errar,
+            verá uma explicação mostrando como chegar
+            à resposta correta.
+        </p>
+
+        <div class="progress">
+
+            <div
+                id="barraProgresso"
+                class="progress-bar">
+            </div>
+
+        </div>
+
+        <div id="quiz" class="quiz"></div>
+
+        <div id="resultado" class="resultado oculto"></div>
+
+    </section>
+
+</div>
+
+
+<footer>
+
+    <p>
+        📚 Estuda+ — Aprender fica mais fácil quando você pratica.
+    </p>
+
+    <p>
+        Projeto educacional desenvolvido em HTML, CSS e JavaScript.
+    </p>
+
+</footer>
+
+
+<script>
+
+const temas = {
+
+eq: {
+
+titulo:"Equações do 1º e 2º grau",
+
+resumo:`Uma equação é uma igualdade que contém uma ou mais incógnitas.
+
+Nas equações do 1º grau, a incógnita possui expoente 1.
+
+Exemplo:
+
+2x + 6 = 14
+
+Primeiro retiramos 6 dos dois lados:
+
+2x = 8
+
+Depois dividimos por 2:
+
+x = 4
+
+Nas equações do 2º grau aparece um termo com x².
+
+A forma geral é:
+
+ax² + bx + c = 0.
+
+Para resolver uma equação do segundo grau podemos utilizar a fórmula de Bhaskara.`,
+
+exemplo:"Se 3x + 6 = 18, então 3x = 12 e x = 4.",
+
+questoes:[
+
+{
+p:"Uma loja vende um produto por R$ 80. João comprou o produto e pagou R$ 20 de entrada. O restante foi dividido igualmente em 3 parcelas. Qual foi o valor de cada parcela?",
+
+a:["R$ 15","R$ 20","R$ 25","R$ 30","R$ 35"],
+
+c:1,
+
+r:"Primeiro calculamos o restante: 80 - 20 = 60. Depois dividimos 60 por 3: 60 ÷ 3 = 20. Portanto, cada parcela foi de R$ 20."
+},
+
+{
+p:"Uma pessoa pensou em um número. Ao multiplicá-lo por 4 e adicionar 8, encontrou 32. Qual era o número?",
+
+a:["4","5","6","7","8"],
+
+c:0,
+
+r:"Montamos a equação 4x + 8 = 32. Então 4x = 24. Dividindo por 4, encontramos x = 6."
+},
+
+{
+p:"A equação x² - 9 = 0 possui como soluções:",
+
+a:["0 e 9","1 e 9","-3 e 3","-9 e 9","3 e 9"],
+
+c:2,
+
+r:"Temos x² = 9. As raízes quadradas de 9 são 3 e -3. Portanto, as soluções são x = -3 e x = 3."
+},
+
+{
+p:"Uma empresa cobra uma taxa fixa de R$ 10 mais R$ 5 por quilômetro percorrido. Quanto será pago por uma viagem de 8 km?",
+
+a:["R$ 30","R$ 40","R$ 45","R$ 50","R$ 55"],
+
+c:2,
+
+r:"A expressão é 10 + 5x. Para 8 km: 10 + 5(8) = 10 + 40 = R$ 50. Portanto, a alternativa correta seria R$ 50."
+},
+
+{
+p:"Se 2x - 6 = 10, o valor de x é:",
+
+a:["4","6","8","10","12"],
+
+c:2,
+
+r:"Somamos 6 aos dois lados: 2x = 16. Depois dividimos por 2: x = 8."
+}
+
+]
+
+},
+
+
+funcoes:{
+
+titulo:"Funções",
+
+resumo:`Uma função relaciona dois valores.
+
+Na função afim temos:
+
+f(x) = ax + b
+
+O número a representa a taxa de variação e b representa o valor inicial.
+
+Quando a > 0, a função é crescente.
+
+Quando a < 0, a função é decrescente.
+
+A função quadrática possui a forma:
+
+f(x) = ax² + bx + c.`,
+
+exemplo:"Na função f(x)=2x+3, quando x=4 temos f(4)=2(4)+3=11.",
+
+questoes:[
+
+{
+p:"Uma corrida de táxi cobra R$ 6 de bandeirada e R$ 3 por quilômetro. A função que representa o preço P em função da distância x é:",
+
+a:["P=6x+3","P=3x+6","P=6x-3","P=3x-6","P=x+9"],
+
+c:1,
+
+r:"A taxa por quilômetro é 3 e o valor inicial é 6. Portanto, P(x)=3x+6."
+},
+
+{
+p:"Na função f(x)=2x+4, qual é o valor de f(5)?",
+
+a:["10","12","14","16","18"],
+
+c:2,
+
+r:"Substituímos x por 5: f(5)=2(5)+4=10+4=14."
+},
+
+{
+p:"Uma função afim possui coeficiente angular negativo. Isso significa que ela é:",
+
+a:["Crescente","Constante","Decrescente","Quadrática","Nula"],
+
+c:2,
+
+r:"Quando o coeficiente angular é negativo, o valor da função diminui conforme x aumenta. Portanto, a função é decrescente."
+},
+
+{
+p:"O gráfico de uma função do 1º grau é representado por:",
+
+a:["Uma reta","Uma circunferência","Uma parábola","Um ponto apenas","Uma elipse"],
+
+c:0,
+
+r:"Toda função afim ou do primeiro grau possui representação gráfica na forma de uma reta."
+},
+
+{
+p:"Na função f(x)=5x-10, a raiz da função é:",
+
+a:["1","2","3","4","5"],
+
+c:1,
+
+r:"A raiz ocorre quando f(x)=0. Então 5x-10=0. Logo 5x=10 e x=2."
+}
+
+]
+
+},
+
+
+porcentagem:{
+
+titulo:"Porcentagem",
+
+resumo:`Porcentagem representa uma parte de 100.
+
+Por exemplo:
+
+20% = 20/100 = 0,20.
+
+Para calcular 20% de R$ 200:
+
+200 × 0,20 = R$ 40.
+
+Em aumentos percentuais, multiplicamos pelo fator correspondente.
+
+Um aumento de 10% significa multiplicar por 1,10.
+
+Um desconto de 10% significa multiplicar por 0,90.`,
+
+exemplo:"Um produto de R$ 100 com desconto de 20% custa R$ 80.",
+
+questoes:[
+
+{
+p:"Uma camiseta custa R$ 120 e recebeu desconto de 25%. Qual será o preço final?",
+
+a:["R$ 80","R$ 85","R$ 90","R$ 95","R$ 100"],
+
+c:2,
+
+r:"25% de 120 = 30. Então 120 - 30 = R$ 90."
+},
+
+{
+p:"Uma população de 2.000 habitantes aumentou 10%. Qual é a nova população?",
+
+a:["2.010","2.100","2.200","2.500","3.000"],
+
+c:2,
+
+r:"10% de 2.000 é 200. Portanto, 2.000 + 200 = 2.200 habitantes."
+},
+
+{
+p:"Um estudante acertou 36 de 40 questões. Qual foi sua porcentagem de acertos?",
+
+a:["80%","85%","90%","95%","100%"],
+
+c:2,
+
+r:"Calculamos 36 ÷ 40 = 0,9. Multiplicando por 100, temos 90%."
+},
+
+{
+p:"Um preço passou de R$ 50 para R$ 60. Qual foi o aumento percentual?",
+
+a:["10%","15%","20%","25%","30%"],
+
+c:2,
+
+r:"O aumento foi de R$ 10. Dividindo 10 por 50, temos 0,20. Portanto, o aumento foi de 20%."
+},
+
+{
+p:"Uma loja oferece 30% de desconto em um produto de R$ 200. O valor do desconto é:",
+
+a:["R$ 30","R$ 40","R$ 50","R$ 60","R$ 70"],
+
+c:3,
+
+r:"30% de 200 = 0,30 × 200 = R$ 60."
+}
+
+]
+
+},
+
+
+probabilidade:{
+
+titulo:"Probabilidade",
+
+resumo:`Probabilidade mede a chance de um evento acontecer.
+
+Quando todos os resultados possuem a mesma chance:
+
+P = número de casos favoráveis ÷ número de casos possíveis.
+
+O resultado pode ser apresentado como fração, decimal ou porcentagem.`,
+
+exemplo:"Ao lançar um dado, existem 6 resultados possíveis. A probabilidade de sair 6 é 1/6.",
+
+questoes:[
+
+{
+p:"Um dado comum possui seis faces. Qual é a probabilidade de sair um número par?",
+
+a:["1/6","1/3","1/2","2/3","5/6"],
+
+c:2,
+
+r:"Os números pares são 2, 4 e 6. Temos 3 casos favoráveis entre 6 possíveis: 3/6 = 1/2."
+},
+
+{
+p:"Uma urna possui 10 bolas, sendo 4 vermelhas. A probabilidade de retirar uma bola vermelha é:",
+
+a:["10%","20%","30%","40%","50%"],
+
+c:3,
+
+r:"Existem 4 bolas vermelhas entre 10 bolas. Portanto, 4/10 = 40%."
+},
+
+{
+p:"Ao lançar uma moeda, a probabilidade de sair cara é:",
+
+a:["0%","25%","50%","75%","100%"],
+
+c:2,
+
+r:"A moeda possui dois resultados possíveis: cara e coroa. Assim, P(cara)=1/2=50%."
+},
+
+{
+p:"Em uma caixa há 5 bolas azuis e 5 bolas verdes. A chance de retirar uma bola verde é:",
+
+a:["10%","25%","40%","50%","75%"],
+
+c:3,
+
+r:"São 5 bolas verdes em um total de 10. Logo 5/10 = 50%."
+},
+
+{
+p:"Um número inteiro entre 1 e 10 é escolhido ao acaso. Qual é a probabilidade de ele ser múltiplo de 3?",
+
+a:["10%","20%","30%","40%","50%"],
+
+c:2,
+
+r:"Os múltiplos de 3 entre 1 e 10 são 3, 6 e 9. São 3 números em 10 possíveis: 30%."
+}
+
+]
+
+},
+
+
+geometria:{
+
+titulo:"Geometria",
+
+resumo:`A geometria estuda formas, medidas, áreas, perímetros e volumes.
+
+Retângulo:
+
+Área = base × altura.
+
+Triângulo:
+
+Área = base × altura ÷ 2.
+
+Círculo:
+
+Área = πr².
+
+O perímetro representa a medida do contorno de uma figura.`,
+
+exemplo:"Um retângulo de 5 m por 3 m possui área de 15 m².",
+
+questoes:[
+
+{
+p:"Um terreno retangular possui 20 metros de comprimento e 10 metros de largura. Qual é sua área?",
+
+a:["30 m²","100 m²","200 m²","300 m²","400 m²"],
+
+c:2,
+
+r:"Área do retângulo = base × altura. Portanto: 20 × 10 = 200 m²."
+},
+
+{
+p:"Um quadrado possui lado de 8 cm. Seu perímetro é:",
+
+a:["16 cm","24 cm","32 cm","64 cm","80 cm"],
+
+c:2,
+
+r:"O quadrado possui quatro lados iguais. Então 4 × 8 = 32 cm."
+},
+
+{
+p:"Um triângulo possui base de 10 cm e altura de 6 cm. Sua área é:",
+
+a:["20 cm²","30 cm²","40 cm²","50 cm²","60 cm²"],
+
+c:1,
+
+r:"Área = base × altura ÷ 2. Então 10 × 6 ÷ 2 = 30 cm²."
+},
+
+{
+p:"Um círculo possui raio 3 cm. Considerando π=3, sua área é:",
+
+a:["9 cm²","18 cm²","27 cm²","36 cm²","54 cm²"],
+
+c:2,
+
+r:"Área = πr². Assim: 3 × 3² = 3 × 9 = 27 cm²."
+},
+
+{
+p:"Um cubo possui aresta de 4 cm. Seu volume é:",
+
+a:["16 cm³","32 cm³","48 cm³","64 cm³","80 cm³"],
+
+c:3,
+
+r:"Volume do cubo = aresta³. Então 4³ = 4 × 4 × 4 = 64 cm³."
+}
+
+]
+
+},
+
+
+interpretacao:{
+
+titulo:"Interpretação de texto",
+
+resumo:`Interpretar um texto significa compreender suas informações explícitas e implícitas.
+
+Em questões de interpretação, é importante identificar:
+
+• Tema principal;
+• Objetivo do autor;
+• Informações explícitas;
+• Informações implícitas;
+• Relações entre as ideias;
+• Efeitos de sentido.
+
+No ENEM, muitas questões apresentam textos, notícias, propagandas, tirinhas ou gráficos.`,
+
+exemplo:"Se uma propaganda utiliza uma imagem de uma floresta destruída para divulgar uma campanha ambiental, a imagem ajuda a reforçar a necessidade de preservação.",
+
+questoes:[
+
+{
+p:"Em um texto argumentativo, o principal objetivo de uma tese é:",
+
+a:["Apresentar apenas exemplos","Defender uma ideia ou ponto de vista","Criar personagens","Descrever um lugar","Informar o título"],
+
+c:1,
+
+r:"A tese representa a ideia central ou posição que será defendida pelo autor ao longo do texto."
+},
+
+{
+p:"Quando uma informação não está escrita diretamente, mas pode ser compreendida a partir das pistas do texto, temos uma informação:",
+
+a:["Explícita","Literal","Implícita","Inexistente","Título"],
+
+c:2,
+
+r:"Uma informação implícita não aparece diretamente, mas pode ser inferida pelo leitor."
+},
+
+{
+p:"O tema de um texto corresponde:",
+
+a:["Ao número de parágrafos","À ideia ou assunto principal","Somente ao título","À assinatura do autor","À última frase"],
+
+c:1,
+
+r:"O tema é o assunto central desenvolvido no texto."
+},
+
+{
+p:"Uma notícia geralmente tem como principal finalidade:",
+
+a:["Informar sobre acontecimentos","Ensinar uma receita","Criar personagens","Vender um produto obrigatoriamente","Fazer uma previsão matemática"],
+
+c:0,
+
+r:"A notícia pertence ao gênero jornalístico e tem como finalidade principal informar sobre acontecimentos."
+},
+
+{
+p:"Em uma campanha publicitária, o uso de imagens e frases de impacto busca principalmente:",
+
+a:["Dificultar a compreensão","Chamar a atenção do público","Eliminar informações","Criar fórmulas","Apresentar somente dados científicos"],
+
+c:1,
+
+r:"A publicidade utiliza recursos verbais e visuais para chamar a atenção e persuadir o público."
+}
+
+]
+
+},
+
+
+gramatica:{
+
+titulo:"Gramática",
+
+resumo:`A gramática estuda o funcionamento da língua.
+
+Entre os conteúdos importantes estão:
+
+• Substantivos;
+• Adjetivos;
+• Verbos;
+• Pronomes;
+• Advérbios;
+• Preposições;
+• Conjunções.
+
+Também é importante compreender concordância verbal e nominal, regência, pontuação e estrutura das frases.`,
+
+exemplo:"Na frase 'Os alunos estudaram', o verbo 'estudaram' concorda com o sujeito plural 'os alunos'.",
+
+questoes:[
+
+{
+p:"Na frase 'Os estudantes dedicados estudaram para a prova', a palavra 'dedicados' é:",
+
+a:["Verbo","Substantivo","Adjetivo","Advérbio","Pronome"],
+
+c:2,
+
+r:"A palavra 'dedicados' caracteriza o substantivo 'estudantes'. Portanto, é um adjetivo."
+},
+
+{
+p:"Na frase 'Maria estudou ontem', a palavra 'ontem' indica:",
+
+a:["Lugar","Tempo","Modo","Pessoa","Quantidade"],
+
+c:1,
+
+r:"'Ontem' indica quando a ação aconteceu. Portanto, expressa circunstância de tempo."
+},
+
+{
+p:"Na frase 'Nós estudaremos amanhã', o verbo está no:",
+
+a:["Presente","Pretérito","Futuro","Infinitivo","Gerúndio"],
+
+c:2,
+
+r:"'Estudaremos' indica uma ação que ainda acontecerá, portanto está no futuro."
+},
+
+{
+p:"Na frase 'Os alunos fizeram a atividade', o sujeito é:",
+
+a:["Fizeram","A atividade","Os alunos","Atividade","A"],
+
+c:2,
+
+r:"Quem realizou a ação de fazer foram 'os alunos'. Portanto, esse é o sujeito."
+},
+
+{
+p:"A concordância verbal está correta em:",
+
+a:["Os aluno estudou.","Os alunos estudou.","Os alunos estudaram.","O alunos estudaram.","Os estudante estudaram."],
+
+c:2,
+
+r:"O sujeito 'Os alunos' está no plural. Por isso, o verbo deve concordar no plural: 'estudaram'."
+}
+
+]
+
+},
+
+
+literatura:{
+
+titulo:"Literatura",
+
+resumo:`A literatura brasileira apresenta diferentes períodos e movimentos.
+
+Entre eles estão:
+
+• Quinhentismo;
+• Barroco;
+• Arcadismo;
+• Romantismo;
+• Realismo;
+• Naturalismo;
+• Parnasianismo;
+• Simbolismo;
+• Modernismo.
+
+Cada período apresenta características próprias relacionadas ao contexto histórico e cultural.`,
+
+exemplo:"O Modernismo brasileiro valorizou uma linguagem mais próxima do cotidiano e buscou romper com padrões tradicionais.",
+
+questoes:[
+
+{
+p:"Uma característica importante do Modernismo brasileiro foi:",
+
+a:["Imitação obrigatória dos modelos europeus","Busca de renovação artística","Rejeição da cultura brasileira","Uso obrigatório do latim","Ausência de experimentação"],
+
+c:1,
+
+r:"O Modernismo buscou renovar a literatura e as artes, rompendo com vários padrões tradicionais."
+},
+
+{
+p:"O Realismo brasileiro é marcado principalmente por:",
+
+a:["Idealização amorosa","Análise crítica da sociedade","Elementos exclusivamente religiosos","Fantasia medieval","Exaltação da natureza"],
+
+c:1,
+
+r:"O Realismo procurou representar a sociedade de maneira mais crítica e objetiva, questionando comportamentos sociais."
+},
+
+{
+p:"O Romantismo brasileiro valorizou frequentemente:",
+
+a:["A objetividade científica","A subjetividade e a idealização","A linguagem matemática","A ausência de emoções","Somente temas urbanos"],
+
+c:1,
+
+r:"O Romantismo valorizou emoções, subjetividade, nacionalismo e idealização."
+},
+
+{
+p:"O Barroco é conhecido por apresentar:",
+
+a:["Conflitos e contrastes","Linguagem exclusivamente científica","Ausência de religiosidade","Somente humor","Simplicidade absoluta"],
+
+c:0,
+
+r:"O Barroco apresenta frequentemente contrastes, como corpo e alma, pecado e perdão, razão e fé."
+},
+
+{
+p:"O Parnasianismo valorizava principalmente:",
+
+a:["A liberdade total da forma","A preocupação com a forma do poema","A linguagem informal","A ausência de rimas","A improvisação"],
+
+c:1,
+
+r:"Os parnasianos valorizavam o cuidado formal, a estrutura e a elaboração estética do poema."
+}
+
+]
+
+},
+
+
+figuras:{
+
+titulo:"Figuras de linguagem",
+
+resumo:`Figuras de linguagem são recursos utilizados para produzir efeitos de sentido.
+
+Algumas das principais são:
+
+Metáfora: comparação implícita.
+
+Comparação: aproximação utilizando palavras como 'como'.
+
+Personificação: atribuição de características humanas a seres não humanos.
+
+Ironia: expressão que produz sentido diferente ou contrário ao literal.
+
+Hipérbole: exagero intencional.`,
+
+exemplo:"Na frase 'Estou morrendo de fome', há uma hipérbole, pois existe um exagero para indicar muita fome.",
+
+questoes:[
+
+{
+p:"Na frase 'Meu coração é um gelo', temos:",
+
+a:["Metáfora","Hipérbole","Personificação","Ironia","Pleonasmo"],
+
+c:0,
+
+r:"O coração não é literalmente feito de gelo. A expressão utiliza uma associação implícita, caracterizando uma metáfora."
+},
+
+{
+p:"'Ela correu como uma lebre' apresenta:",
+
+a:["Metáfora","Comparação","Ironia","Hipérbole","Antítese"],
+
+c:1,
+
+r:"A expressão utiliza 'como' para aproximar duas ideias. Portanto, é uma comparação."
+},
+
+{
+p:"'O vento cantava pela janela' apresenta:",
+
+a:["Personificação","Metáfora","Ironia","Hipérbole","Comparação"],
+
+c:0,
+
+r:"O vento recebe uma ação humana, cantar. Esse recurso é chamado de personificação."
+},
+
+{
+p:"'Já falei isso um milhão de vezes!' apresenta:",
+
+a:["Comparação","Metáfora","Hipérbole","Ironia","Personificação"],
+
+c:2,
+
+r:"A expressão exagera a quantidade de vezes para enfatizar a ideia. Isso caracteriza uma hipérbole."
+},
+
+{
+p:"Quando alguém diz 'Que ótimo!' depois de receber uma notícia ruim, pode estar utilizando:",
+
+a:["Ironia","Comparação","Hipérbole","Metáfora","Personificação"],
+
+c:0,
+
+r:"A palavra 'ótimo' é usada com sentido contrário ao esperado pela situação. Esse recurso caracteriza ironia."
+}
+
+]
+
+},
+
+
+globalizacao:{
+
+titulo:"Globalização",
+
+resumo:`Globalização é o processo de intensificação das relações entre diferentes partes do mundo.
+
+Ela envolve:
+
+• Comércio internacional;
+• Circulação de informações;
+• Tecnologia;
+• Empresas multinacionais;
+• Fluxos financeiros;
+• Transportes;
+• Comunicação.
+
+A internet e os avanços tecnológicos aceleraram esse processo.`,
+
+exemplo:"Uma empresa pode desenvolver um produto em um país, produzir peças em vários outros e vender o produto em diversos mercados.",
+
+questoes:[
+
+{
+p:"Um dos fatores que contribuiu para acelerar a globalização foi:",
+
+a:["Diminuição das comunicações","Avanço das tecnologias de comunicação","Fim da internet","Redução dos transportes","Isolamento dos países"],
+
+c:1,
+
+r:"Os avanços tecnológicos facilitaram a comunicação e a circulação de informações em escala mundial."
+},
+
+{
+p:"Empresas que possuem atividades em diferentes países são chamadas frequentemente de:",
+
+a:["Locais","Multinacionais","Artesanais","Familiares","Comunitárias"],
+
+c:1,
+
+r:"Empresas multinacionais possuem atuação ou unidades produtivas em diferentes países."
+},
+
+{
+p:"A globalização aumentou principalmente:",
+
+a:["O isolamento entre países","A circulação de mercadorias e informações","A distância física entre cidades","A ausência de comércio","O fim da tecnologia"],
+
+c:1,
+
+r:"A globalização intensificou os fluxos de mercadorias, capitais, pessoas e informações."
+},
+
+{
+p:"Um possível efeito da globalização sobre os mercados é:",
+
+a:["Maior integração econômica","Fim das empresas","Fim do comércio","Desaparecimento das tecnologias","Redução da comunicação"],
+
+c:0,
+
+r:"A globalização aumenta a integração entre diferentes economias e mercados."
+},
+
+{
+p:"A internet contribui para a globalização porque:",
+
+a:["Impede comunicação internacional","Facilita a circulação de informações","Elimina transportes","Impede comércio","Reduz conexões"],
+
+c:1,
+
+r:"A internet permite que informações sejam compartilhadas rapidamente entre pessoas e instituições de diferentes lugares."
+}
+
+]
+
+},
+
+
+clima:{
+
+titulo:"Clima",
+
+resumo:`Clima corresponde ao comportamento médio das condições atmosféricas de uma região durante longos períodos.
+
+É importante diferenciar clima de tempo.
+
+Tempo atmosférico: condição da atmosfera em determinado momento.
+
+Clima: comportamento médio observado durante um longo período.
+
+Entre os elementos climáticos estão temperatura, umidade e pressão atmosférica.`,
+
+exemplo:"Dizer que hoje está chovendo descreve o tempo. Dizer que determinada região possui clima tropical descreve uma característica climática.",
+
+questoes:[
+
+{
+p:"A principal diferença entre tempo e clima é:",
+
+a:["Tempo é sempre frio","Clima é observado em longo prazo","Clima muda a cada minuto","Tempo nunca muda","Não existe diferença"],
+
+c:1,
+
+r:"Tempo representa as condições atmosféricas de determinado momento. Clima é analisado considerando períodos mais longos."
+},
+
+{
+p:"Um dos elementos do clima é:",
+
+a:["Vegetação","Temperatura","Relevo","População","Urbanização"],
+
+c:1,
+
+r:"Temperatura é um dos principais elementos climáticos, junto com umidade e pressão atmosférica."
+},
+
+{
+p:"A latitude influencia o clima principalmente porque:",
+
+a:["Determina a quantidade de radiação solar recebida","Elimina os ventos","Impede as chuvas","Determina diretamente a população","Elimina a umidade"],
+
+c:0,
+
+r:"A latitude influencia a incidência da radiação solar sobre a superfície terrestre."
+},
+
+{
+p:"Regiões próximas à Linha do Equador recebem:",
+
+a:["Menor incidência solar durante todo o ano","Maior incidência de radiação solar","Somente neve","Ausência de chuvas","Sempre temperaturas negativas"],
+
+c:1,
+
+r:"As áreas próximas ao Equador recebem grande quantidade de radiação solar durante o ano."
+},
+
+{
+p:"A altitude pode influenciar a temperatura porque:",
+
+a:["Temperaturas tendem a diminuir com o aumento da altitude","Sempre aumenta a temperatura","Elimina a pressão","Impede os ventos","Não influencia a atmosfera"],
+
+c:0,
+
+r:"De modo geral, a temperatura diminui conforme a altitude aumenta."
+}
+
+]
+
+},
+
+
+urbanizacao:{
+
+titulo:"Urbanização",
+
+resumo:`Urbanização é o processo de crescimento da população urbana em relação à população rural.
+
+Ela pode estar relacionada à industrialização e à busca por empregos e serviços nas cidades.
+
+O crescimento urbano rápido pode gerar desafios como:
+
+• Falta de moradia;
+• Trânsito;
+• Poluição;
+• Desigualdade;
+• Falta de infraestrutura.`,
+
+exemplo:"Quando muitas pessoas migram do campo para a cidade em busca de trabalho, ocorre um processo relacionado ao êxodo rural.",
+
+questoes:[
+
+{
+p:"Urbanização corresponde principalmente:",
+
+a:["Ao crescimento da população urbana","Ao crescimento das florestas","À redução das cidades","Ao fim das migrações","À diminuição da população"],
+
+c:0,
+
+r:"Urbanização é o processo de aumento da população urbana em relação à população rural."
+},
+
+{
+p:"O êxodo rural corresponde:",
+
+a:["À migração cidade-campo","À migração campo-cidade","À migração internacional apenas","Ao crescimento vegetal","Ao turismo"],
+
+c:1,
+
+r:"Êxodo rural é o deslocamento de pessoas do campo para as cidades."
+},
+
+{
+p:"Um problema associado ao crescimento urbano desordenado é:",
+
+a:["Melhoria automática da infraestrutura","Aumento de problemas de mobilidade","Fim da poluição","Redução do trânsito","Fim da desigualdade"],
+
+c:1,
+
+r:"O crescimento urbano sem planejamento pode aumentar problemas de mobilidade, infraestrutura e acesso a serviços."
+},
+
+{
+p:"O planejamento urbano busca:",
+
+a:["Organizar o espaço das cidades","Eliminar todas as cidades","Impedir transportes","Reduzir serviços públicos","Acabar com bairros"],
+
+c:0,
+
+r:"O planejamento urbano busca organizar o uso do espaço e melhorar infraestrutura, mobilidade e serviços."
+},
+
+{
+p:"A industrialização pode estimular a urbanização porque:",
+
+a:["Cria empregos e atividades econômicas nas cidades","Elimina as cidades","Impede migrações","Reduz empregos urbanos","Acaba com serviços"],
+
+c:0,
+
+r:"A industrialização pode concentrar empregos e atividades econômicas nas cidades, atraindo população."
+}
+
+]
+
+},
+
+
+populacao:{
+
+titulo:"População",
+
+resumo:`A Geografia da população analisa como as pessoas se distribuem pelo espaço.
+
+Alguns conceitos importantes:
+
+Densidade demográfica: relação entre população e área.
+
+Natalidade: número de nascimentos.
+
+Mortalidade: número de mortes.
+
+Expectativa de vida: média de anos que uma população pode esperar viver.
+
+Migração: deslocamento de pessoas de um lugar para outro.`,
+
+exemplo:"Um país pode possuir uma população grande, mas baixa densidade demográfica se tiver um território muito extenso.",
+
+questoes:[
+
+{
+p:"Densidade demográfica corresponde:",
+
+a:["Ao número total de cidades","À relação entre população e área","Ao número de nascimentos","À expectativa de vida","Ao número de migrantes"],
+
+c:1,
+
+r:"A densidade demográfica é calculada relacionando a população de uma área com seu tamanho."
+},
+
+{
+p:"Quando uma pessoa sai de seu país para viver em outro, ocorre:",
+
+a:["Migração internacional","Urbanização obrigatória","Natalidade","Mortalidade","Industrialização"],
+
+c:0,
+
+r:"O deslocamento de pessoas entre países é uma forma de migração internacional."
+},
+
+{
+p:"Uma redução da taxa de natalidade significa:",
+
+a:["Menor número relativo de nascimentos","Maior número de mortes necessariamente","Aumento automático da população","Fim das migrações","Aumento da expectativa de vida automaticamente"],
+
+c:0,
+
+r:"Natalidade está relacionada aos nascimentos. Portanto, sua redução significa menos nascimentos em relação à população."
+},
+
+{
+p:"Expectativa de vida representa:",
+
+a:["Número de filhos por família","Média de anos que uma população pode esperar viver","Número de cidades","Densidade urbana","Taxa de migração"],
+
+c:1,
+
+r:"Expectativa de vida é uma estimativa da média de anos que uma população pode viver."
+},
+
+{
+p:"A migração pode ocorrer por motivos:",
+
+a:["Somente turísticos","Somente climáticos","Econômicos, políticos, sociais ou ambientais","Somente esportivos","Somente religiosos"],
+
+c:2,
+
+r:"As migrações podem ocorrer por diferentes motivos, incluindo busca de emprego, conflitos, questões ambientais e oportunidades sociais."
+}
+
+]
+
+}
+
+};
+
+
+let temaAtual = null;
+let materiaAtual = null;
+let acertos = 0;
+let respondidas = 0;
+
+
+function abrirMateria(materia){
+
+    document.querySelectorAll("section").forEach(
+        s => s.classList.add("oculto")
+    );
+
+    document.getElementById(materia).classList.remove("oculto");
+
+    materiaAtual = materia;
+
+}
+
+
+function voltarInicio(){
+
+    document.querySelectorAll("section").forEach(
+        s => s.classList.add("oculto")
+    );
+
+    document.getElementById("inicio").classList.remove("oculto");
+
+}
+
+
+function voltarMaterias(){
+
+    document.querySelectorAll("section").forEach(
+        s => s.classList.add("oculto")
+    );
+
+    document.getElementById(materiaAtual).classList.remove("oculto");
+
+}
+
+
+function abrirTema(id){
+
+    temaAtual = temas[id];
+
+    document.querySelectorAll("section").forEach(
+        s => s.classList.add("oculto")
+    );
+
+    document.getElementById("conteudo").classList.remove("oculto");
+
+    document.getElementById("tituloTema").textContent =
+        temaAtual.titulo;
+
+    document.getElementById("textoResumo").innerHTML =
+        temaAtual.resumo.replace(/\n/g,"<br>");
+
+    document.getElementById("textoExemplo").textContent =
+        temaAtual.exemplo;
+
+    acertos = 0;
+    respondidas = 0;
+
+    document.getElementById("resultado").classList.add("oculto");
+
+    carregarQuiz();
+
+}
+
+
+function carregarQuiz(){
+
+    const quiz = document.getElementById("quiz");
+
+    quiz.innerHTML = "";
+
+    temaAtual.questoes.forEach((questao,index)=>{
+
+        const div = document.createElement("div");
+
+        div.className = "questao";
+
+        div.innerHTML = `
+
+            <h3>
+                Questão ${index+1}
+            </h3>
+
+            <p>
+                ${questao.p}
+            </p>
+
+            <div class="alternativas">
+
+                ${questao.a.map((alt,i)=>`
+
+                    <button
+                        onclick="responder(${index},${i},this)">
+
+                        ${String.fromCharCode(65+i)}) ${alt}
+
+                    </button>
+
+                `).join("")}
+
+            </div>
+
+            <div
+                id="resolucao-${index}"
+                class="resolucao oculto">
+
+            </div>
+
+        `;
+
+        quiz.appendChild(div);
+
+    });
+
+}
+
+
+function responder(questaoIndex,alternativa,botao){
+
+    const questao =
+        temaAtual.questoes[questaoIndex];
+
+    const botoes =
+        botao.parentElement.querySelectorAll("button");
+
+    // Impede responder novamente
+    if(
+        Array.from(botoes).some(
+            b => b.classList.contains("certa") ||
+                 b.classList.contains("errada")
+        )
+    ){
+
+        return;
+
+    }
+
+
+    respondidas++;
+
+
+    if(alternativa === questao.c){
+
+        botao.classList.add("certa");
+
+        acertos++;
+
+        document.getElementById(
+            `resolucao-${questaoIndex}`
+        ).innerHTML = `
+
+            <strong>✅ Muito bem!</strong>
+
+            <p>
+                Você acertou a questão.
+            </p>
+
+        `;
+
+    }else{
+
+        botao.classList.add("errada");
+
+        botoes[questao.c].classList.add("certa");
+
+        document.getElementById(
+            `resolucao-${questaoIndex}`
+        ).innerHTML = `
+
+            <strong>❌ Você errou.</strong>
+
+            <p>
+                <b>Como resolver:</b>
+                ${questao.r}
+            </p>
+
+        `;
+
+    }
+
+
+    document.getElementById(
+        `resolucao-${questaoIndex}`
+    ).classList.remove("oculto");
+
+
+    const progresso =
+        (respondidas / temaAtual.questoes.length) * 100;
+
+    document.getElementById(
+        "barraProgresso"
+    ).style.width = progresso + "%";
+
+
+    if(
+        respondidas === temaAtual.questoes.length
+    ){
+
+        mostrarResultado();
+
+    }
+
+}
+
+
+function mostrarResultado(){
+
+    const resultado =
+        document.getElementById("resultado");
+
+    const total =
+        temaAtual.questoes.length;
+
+    let mensagem = "";
+
+    if(acertos === 5){
+
+        mensagem =
+            "🏆 Excelente! Você acertou todas as questões.";
+
+    }else if(acertos >= 3){
+
+        mensagem =
+            "👏 Muito bom! Você teve um bom desempenho.";
+
+    }else{
+
+        mensagem =
+            "📚 Continue estudando. Revise o resumo e tente novamente.";
+
+    }
+
+
+    resultado.innerHTML = `
+
+        <h2>Resultado</h2>
+
+        <p>
+            Você acertou
+            <strong>${acertos}</strong>
+            de
+            <strong>${total}</strong>
+            questões.
+        </p>
+
+        <p>
+            ${mensagem}
+        </p>
+
+        <br>
+
+        <button onclick="abrirTemaAtual()">
+            🔄 Refazer quiz
+        </button>
+
+    `;
+
+    resultado.classList.remove("oculto");
+
+}
+
+
+function abrirTemaAtual(){
+
+    const id =
+        Object.keys(temas).find(
+            chave => temas[chave] === temaAtual
+        );
+
+    abrirTema(id);
+
+}
+
+</script>
+
+</body>
+</html>
+```
